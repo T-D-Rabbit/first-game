@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dh5yxy0s7vgnc"]
+
+[ext_resource type="FontFile" uid="uid://bwghfawaoe55y" path="res://assets/fonts/PixelOperator8.ttf" id="1_sa2e1"]
+
+[node name="Death_label" type="Label"]
+offset_left = -33.0
+offset_top = -50.0
+offset_right = 63.0
+offset_bottom = -31.0
+scale = Vector2(1.31889, 1.77289)
+theme_override_colors/font_color = Color(0.0980392, 0.313726, 0.752941, 1)
+theme_override_fonts/font = ExtResource("1_sa2e1")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+autowrap_mode = 2
