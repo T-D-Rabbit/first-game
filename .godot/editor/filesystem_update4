@@ -4,3 +4,10 @@ res://scripts/killzone.gd
 res://scenes/killzone.tscn
 res://scenes/player.tscn
 res://scenes/game.tscn
+res://scenes/Levels/level0.tscn
+res://scenes/Levels/level1.tscn
+res://scenes/slime2.tscn
+res://scenes/Levelchanger.tscn
+res://scenes/levelchanger.gd
+res://scripts/levelchanger.gd
+res://scenes/levelchanger.tscn
