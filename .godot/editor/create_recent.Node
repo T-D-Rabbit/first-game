@@ -1,3 +1,6 @@
+Label
+Panel
+VBoxContainer
 Button
 CollisionShape2D
 AnimatedSprite2D
@@ -6,10 +9,6 @@ AudioStreamPlayer2D
 Area2D
 Node
 AnimationPlayer
-Label
 StaticBody2D
 CharacterBody2D
 RayCast2D
-AnimationTree
-Timer
-AnimatableBody2D

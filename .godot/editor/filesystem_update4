@@ -11,3 +11,5 @@ res://scenes/Levelchanger.tscn
 res://scenes/levelchanger.gd
 res://scripts/levelchanger.gd
 res://scenes/levelchanger.tscn
+res://scenes/Levels/main_menu.tscn
+res://scripts/main_menu.gd
