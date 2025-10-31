@@ -1,12 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://s5ew04awfjys"]
+[gd_scene load_steps=14 format=3 uid="uid://s5ew04awfjys"]
 
 [ext_resource type="Script" uid="uid://cqc8slfjnltxx" path="res://scripts/main_menu.gd" id="1_13qgu"]
 [ext_resource type="Texture2D" uid="uid://b2gadvj02i7q6" path="res://GameScreenshot.png" id="1_p348b"]
 [ext_resource type="FontFile" uid="uid://dah007pbaefu8" path="res://assets/fonts/Rosemartin.otf" id="2_13qgu"]
+[ext_resource type="Script" uid="uid://ca476ri0h8c5c" path="res://scripts/audio_control.gd" id="4_towmw"]
+[ext_resource type="Script" uid="uid://uimeq3ef0cfh" path="res://scripts/full_screen_control.gd" id="5_lars7"]
+[ext_resource type="Script" uid="uid://sxl5xsh3nfdx" path="res://scripts/scale_control.gd" id="6_cbtn6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_towmw"]
 texture = ExtResource("1_p348b")
-modulate_color = Color(0.49189138, 0.49189138, 0.49189138, 1)
+modulate_color = Color(0.8299065, 0.8299065, 0.8299065, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnc80"]
 bg_color = Color(1, 1, 1, 1)
@@ -37,6 +40,14 @@ shadow_offset = Vector2(0, 3.41)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gken0"]
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_13qgu"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_towmw"]
+color = Color(0.003921569, 0.20784314, 0.8784314, 1)
+thickness = 6
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -46,7 +57,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_13qgu")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="BackgroundPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,7 +66,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_towmw")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -571.0
+offset_top = 1.0
+offset_right = 31.0
+offset_bottom = 138.24445
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.6211273, 0.25008956, 0.1535181, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_13qgu")
+theme_override_font_sizes/font_size = 46
+text = "Basic Knight Adventure"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainButtons" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -70,7 +100,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="MainButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.016642917, 0.016642917, 0.016642917, 1)
@@ -84,7 +114,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_cbtn6")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gken0")
 text = "Start Game"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Button2" type="Button" parent="MainButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.016642917, 0.016642917, 0.016642917, 1)
@@ -98,7 +128,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_cbtn6")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gken0")
 text = "Options"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Button3" type="Button" parent="MainButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.016642917, 0.016642917, 0.016642917, 1)
@@ -110,27 +140,129 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_pnc80")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lars7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_cbtn6")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_gken0")
-text = "Exit"
+text = "Exit-Disabled for web"
 
-[node name="Label" type="Label" parent="."]
+[node name="OptionsPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 649.0
+offset_top = 327.0
+offset_right = 1128.0
+offset_bottom = 635.0
+
+[node name="Label" type="Label" parent="OptionsPanel"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -571.0
-offset_top = 1.0
-offset_right = 31.0
-offset_bottom = 138.24445
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.46822277, 0.18180563, 0.10581737, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+anchors_preset = -1
+anchor_right = 0.99600005
+offset_right = 1.9159851
+offset_bottom = 89.0
+theme_override_colors/font_color = Color(0.735014, 0.30741763, 0.18864085, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
 theme_override_fonts/font = ExtResource("2_13qgu")
-theme_override_font_sizes/font_size = 46
-text = "Basic Knight Adventure"
+theme_override_font_sizes/font_size = 38
+text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_exit_pressed"]
+[node name="back" type="Button" parent="OptionsPanel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 252.0
+offset_right = 69.0
+offset_bottom = 297.0
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.016642917, 0.016642917, 0.016642917, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_pnc80")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lars7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cbtn6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gken0")
+text = "<=="
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.75
+offset_top = -78.25
+offset_right = 176.75
+offset_bottom = 78.25
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_13qgu")
+text = "Music Volume"
+
+[node name="AudioControl" type="HSlider" parent="OptionsPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/slider = SubResource("StyleBoxLine_13qgu")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_towmw")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_towmw")
+max_value = 1.0
+step = 0.001
+value = 1.0
+script = ExtResource("4_towmw")
+audio_bus_name = "Music"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="OptionsPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 229
+
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_13qgu")
+text = "Fullscreen"
+
+[node name="FullScreenControl" type="CheckButton" parent="OptionsPanel/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_13qgu")
+script = ExtResource("5_lars7")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="OptionsPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="OptionsPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_13qgu")
+text = "Resolution"
+
+[node name="ScaleControl" type="OptionButton" parent="OptionsPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 4
+popup/item_0/text = "100 %"
+popup/item_0/id = 0
+popup/item_1/text = "75 %"
+popup/item_1/id = 1
+popup/item_2/text = "50 %"
+popup/item_2/id = 2
+popup/item_3/text = "25 %"
+popup/item_3/id = 3
+script = ExtResource("6_cbtn6")
+
+[connection signal="pressed" from="MainButtons/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MainButtons/Button2" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MainButtons/Button3" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="OptionsPanel/back" to="." method="_on_back_options_pressed"]
+[connection signal="value_changed" from="OptionsPanel/VBoxContainer/HBoxContainer/AudioControl" to="OptionsPanel/VBoxContainer/HBoxContainer/AudioControl" method="_on_value_changed"]
+[connection signal="toggled" from="OptionsPanel/VBoxContainer/HBoxContainer3/FullScreenControl" to="OptionsPanel/VBoxContainer/HBoxContainer3/FullScreenControl" method="_on_toggled"]
+[connection signal="item_selected" from="OptionsPanel/VBoxContainer/HBoxContainer2/ScaleControl" to="OptionsPanel/VBoxContainer/HBoxContainer2/ScaleControl" method="_on_item_selected"]
