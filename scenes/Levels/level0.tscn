@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cbm4epxakeh7r"]
+[gd_scene load_steps=24 format=3 uid="uid://cbm4epxakeh7r"]
 
 [ext_resource type="Script" uid="uid://cn8m0hjsr64gr" path="res://scripts/game_manager.gd" id="1_naj8o"]
 [ext_resource type="FontFile" uid="uid://dnnuv8n45uh37" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_kka7u"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cqe35hqlsy5bc" path="res://scenes/slime.tscn" id="8_5bao7"]
 [ext_resource type="FontFile" uid="uid://bwghfawaoe55y" path="res://assets/fonts/PixelOperator8.ttf" id="9_xjs14"]
 [ext_resource type="PackedScene" uid="uid://entdvyl4cjbe" path="res://scenes/levelchanger.tscn" id="10_kka7u"]
+[ext_resource type="PackedScene" uid="uid://qo4wb0x8uce5" path="res://scenes/pause_menu.tscn" id="11_f5gbu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f5gbu"]
 texture = ExtResource("3_f5gbu")
@@ -465,3 +466,10 @@ text = "Good luck-->"
 
 [node name="Levelchanger" parent="." instance=ExtResource("10_kka7u")]
 position = Vector2(1090, 29)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_f5gbu")]
+offset_top = 2.0
+offset_bottom = 2.0
+metadata/_edit_use_anchors_ = true

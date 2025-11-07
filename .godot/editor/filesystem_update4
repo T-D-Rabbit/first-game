@@ -2,3 +2,9 @@ res://export_presets.cfg
 res://scenes/Levels/main_menu.tscn
 res://scripts/main_menu.gd
 res://scripts/killzone.gd
+res://scenes/pause_menu.tscn
+res://pause_menu.gdshader
+res://scripts/pause_menu.gd
+res://Shaders/pause_menu.gdshader
+res://scenes/Levels/level0.tscn
+res://scenes/Levels/level1.tscn

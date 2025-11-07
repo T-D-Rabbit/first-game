@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://csdwyxeo8uyav"]
+[gd_scene load_steps=31 format=3 uid="uid://csdwyxeo8uyav"]
 
 [ext_resource type="Texture2D" uid="uid://kmswh6flaat3" path="res://assets/sprites/world_tileset.png" id="1_xq6p0"]
 [ext_resource type="PackedScene" uid="uid://covi45n3gt4de" path="res://scenes/player.tscn" id="2_djuqw"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cqe35hqlsy5bc" path="res://scenes/slime.tscn" id="7_ylpj7"]
 [ext_resource type="PackedScene" uid="uid://bp7qp6p0ejcf7" path="res://scenes/slime2.tscn" id="9_a4rx7"]
 [ext_resource type="FontFile" uid="uid://bwghfawaoe55y" path="res://assets/fonts/PixelOperator8.ttf" id="10_v6sju"]
+[ext_resource type="PackedScene" uid="uid://qo4wb0x8uce5" path="res://scenes/pause_menu.tscn" id="11_wtsr7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_djuqw"]
 texture = ExtResource("1_xq6p0")
@@ -182,6 +183,21 @@ sources/1 = SubResource("TileSetAtlasSource_djuqw")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4rx7"]
 size = Vector2(48, 30)
 
+[sub_resource type="Animation" id="Animation_wtsr7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1747, 10)]
+}
+
 [sub_resource type="Animation" id="Animation_ar5rt"]
 resource_name = "move"
 length = 3.5
@@ -197,21 +213,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1747, 10), Vector2(1905, 10)]
-}
-
-[sub_resource type="Animation" id="Animation_wtsr7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1747, 10)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_erp1l"]
@@ -296,6 +297,21 @@ _data = {
 &"RESET": SubResource("Animation_61u81")
 }
 
+[sub_resource type="Animation" id="Animation_1u04e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1191, -124)]
+}
+
 [sub_resource type="Animation" id="Animation_jsxby"]
 resource_name = "upperairmove"
 length = 3.2
@@ -313,7 +329,13 @@ tracks/0/keys = {
 "values": [Vector2(1191, -124), Vector2(1010, -124)]
 }
 
-[sub_resource type="Animation" id="Animation_1u04e"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5n8i"]
+_data = {
+&"RESET": SubResource("Animation_1u04e"),
+&"upperairmove": SubResource("Animation_jsxby")
+}
+
+[sub_resource type="Animation" id="Animation_x5jvf"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -325,13 +347,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1191, -124)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_u5n8i"]
-_data = {
-&"RESET": SubResource("Animation_1u04e"),
-&"upperairmove": SubResource("Animation_jsxby")
+"values": [Vector2(1206, -124)]
 }
 
 [sub_resource type="Animation" id="Animation_0u6et"]
@@ -349,21 +365,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1206, -124), Vector2(1025, -124)]
-}
-
-[sub_resource type="Animation" id="Animation_x5jvf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1206, -124)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qkcr3"]
@@ -536,3 +537,10 @@ theme_override_fonts/font = ExtResource("10_v6sju")
 theme_override_font_sizes/font_size = 8
 text = "Watch 
 out!"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_wtsr7")]
+offset_top = 2.0
+offset_bottom = 2.0
+metadata/_edit_use_anchors_ = true
